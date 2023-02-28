@@ -18,15 +18,11 @@ def write_in_csv_format(
         arnaldo_ask_hamburguer,
         orders,
         days):
-    maria_most_ordered = None
-    maria_most_ordered_times = 0
-
-    for order in maria_eats:
-        if maria_eats[order] > maria_most_ordered_times:
-            maria_most_ordered = order
-            maria_most_ordered_times = maria_eats[order]
+    # utilização do max() em dicionário
+    # referência no link: https://realpython.com/python-min-and-max/
     with open("data/mkt_campaign.txt", mode="w") as file:
-        file.writelines(f"{maria_most_ordered}\n")
+        file.writelines(
+            f"{max(maria_eats.items(), key=lambda item : item[1])[0]}\n")
         file.writelines(f"{str(arnaldo_ask_hamburguer)}\n")
         file.writelines(f"{str(orders)}\n")
         file.writelines(f"{str(days)}")
